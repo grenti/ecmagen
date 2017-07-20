@@ -1,0 +1,13 @@
+# Node
+node_modules
+npm*.log
+
+# Logs
+*.log
+log
+
+# MacOS
+.DS_Store
+
+# Shell
+bin

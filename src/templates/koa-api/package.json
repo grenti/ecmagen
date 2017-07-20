@@ -1,0 +1,34 @@
+{
+  "name": "ecmagen-api",
+  "displayName": "EcmaGen-Api",
+  "version": "1.0.0",
+  "private": true,
+  "engines": {
+    "node": ">=8.0"
+  },
+  "scripts": {
+    "dev": "nodemon './index.js'",
+    "test": "tape './src/tests/runner.js' | tap-spec",
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "boom": "^5.1.0",
+    "koa": "^2.3.0",
+    "koa-bodyparser": "^4.2.0",
+    "koa-router": "^7.2.1"
+  },
+  "devDependencies": {
+    "eslint": "^4.2.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-react": "^7.1.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "nodemon": "^1.11.0",
+    "supertest": "^3.0.0",
+    "tap-nyan": "^1.1.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.7.0"
+  }
+}

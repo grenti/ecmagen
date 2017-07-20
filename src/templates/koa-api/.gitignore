@@ -1,0 +1,12 @@
+# node
+node_modules
+
+# MacOS
+.DS_Store
+
+# npm
+npm*.log
+
+# Logs
+*.log
+log

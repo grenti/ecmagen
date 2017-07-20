@@ -1,0 +1,27 @@
+{
+  "name": "ecmagen",
+  "version": "1.0.0",
+  "description": "NodeJS Project Generator",
+  "main": "index.js",
+  "repository": "https://github.com/grenti/ecmagen.git",
+  "author": "Ghamoti Anye Angwafo",
+  "license": "MIT",
+  "scripts": {
+    "test": "tape './src/tests/runner.js' | tap-spec"
+  },
+  "dependencies": {
+    "inquirer": "^3.2.0"
+  },
+  "devDependencies": {
+    "eslint": "^4.2.0",
+    "eslint-config-standard": "^10.2.1",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.0",
+    "eslint-plugin-promise": "^3.5.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "sinon": "^2.3.8",
+    "tap-nyan": "^1.1.0",
+    "tap-spec": "^4.1.1",
+    "tape": "^4.7.0"
+  }
+}
