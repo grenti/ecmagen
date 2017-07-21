@@ -10,6 +10,7 @@
     "test": "tape './src/tests/runner.js' | tap-spec"
   },
   "dependencies": {
+    "fs-extra": "^4.0.0",
     "inquirer": "^3.2.0"
   },
   "devDependencies": {

@@ -1,35 +1,55 @@
 const inquirer = require('inquirer')
 const fs = require('fs')
-const { prompts, directoryExists } = require('./prompts')
+const Prompter = require('./prompter')
+const FileManager = require('./fileManager')
 
 const cwd = process.cwd()
 
 function Generator() { }
 
-Generator.generate = function generate() {
+Generator.generate = async function generate() {
   try {
-    inquirer.prompt(prompts)
+    const answers = await Prompter.queryForProjectDetails()
     const {
       ['project-name']: projectName,
       ['project-type']: projectType
      } = answers
-    const templatePath = `${__dirname}/templates/${projectType}`
+    const templatePath = `${cwd}/src/templates/${projectType}`
 
-    fs.mkdirSync(`${cwd}/${projectName}`)
+    const result = await makeDirectory(`${cwd}/${projectName}`)
 
-    createDirectoryContents(templatePath, projectName)
+    if (!result) {
+      createDirectoryContents(templatePath, projectName)
+    }
   } catch (e) {
-    console.error(`Error getting answers from Inquirer Module: ${e}`)
+    console.error(`Error generating project: ${e}`)
+    return Promise.reject(e)
   }
 }
 
-// function createDirectory(directoryPath) {
-//   try {
-//     fs.mkdirSync(`${cwd}/${projectName}`)
-//   } catch (e) {
-//     inquirer.prompt(directoryExists)
-//   }
-// }
+async function makeDirectory(directoryPath) {
+  try {
+    fs.mkdirSync(directoryPath)
+  } catch (e) {
+    if (e.code === 'EEXIST') {
+      const shouldOverride = await Prompter.overrideDirectory()
+      console.log(`ShouldOverride: ${shouldOverride}`)
+      if (shouldOverride) {
+        FileManager.removeDirectorySync(directoryPath)
+        console.log('Recursively calling createDirectory again')
+        makeDirectory(directoryPath)
+      } else {
+        return console.log('You declined overriding current directory')
+      }
+    } else if (e.code === 'EACCESS') {
+      return console.log('You do not have permissions to create a project here.')
+    } else if (e.code === 'ENOENT') {
+      return console.log('Path provided is invalid, please check it.')
+    } else {
+      return console.log('Could not create directory or file')
+    }
+  }
+}
 
 function createDirectoryContents(templatePath, projectPath) {
   try {

@@ -1,3 +1,11 @@
-const GeneratorAsync = require('./src/lib/generator-async')
+const Generator = require('./src/lib/generator')
 
-GeneratorAsync.generate()
+Generator.generate()
+  .then(success => {
+    if (success) {
+      console.log('Done!')
+    }
+  })
+  .catch(e => {
+    console.error(`Error generating project template. Error: ${e}`)
+  })
