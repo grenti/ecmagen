@@ -1,4 +1,5 @@
-const inquirer = require('inquirer')
+'use strict'
+
 const fs = require('fs')
 const Prompter = require('./prompter')
 const FileManager = require('./fileManager')

@@ -1,3 +1,5 @@
+'use strict'
+
 const inquirer = require('inquirer')
 const { prompts, directoryExists } = require('./prompts')
 

@@ -1,3 +1,7 @@
+#!/usr/bin/env node
+
+'use strict'
+
 const Generator = require('./src/lib/generator')
 
 Generator.generate()

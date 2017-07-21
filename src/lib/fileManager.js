@@ -1,3 +1,5 @@
+'use strict'
+
 const fs = require('fs')
 const fsExtra = require('fs-extra')
 const inquirer = require('inquirer')

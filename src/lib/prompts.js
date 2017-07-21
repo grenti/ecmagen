@@ -1,3 +1,5 @@
+'use strict'
+
 const { TYPES } = require('../constants/lists')
 
 const projectType = {

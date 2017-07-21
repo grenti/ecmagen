@@ -1,3 +1,5 @@
+'use strict'
+
 const inquirer = require('inquirer')
 const FileManager = require('./fileManager')
 const fs = require('fs')
