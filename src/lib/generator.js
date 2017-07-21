@@ -20,6 +20,7 @@ Generator.generate = async function generate() {
 
     if (!result) {
       createDirectoryContents(templatePath, projectName)
+      return Promise.resolve(true)
     }
   } catch (e) {
     console.error(`Error generating project: ${e}`)
@@ -54,10 +55,10 @@ async function makeDirectory(directoryPath) {
 function createDirectoryContents(templatePath, projectPath) {
   try {
     const filesToCreate = fs.readdirSync(templatePath)
-    filesToCreate.forEach(f => {
-      const originalPath = `${templatePath}/${f}`
+    filesToCreate.forEach(file => {
+      const originalPath = `${templatePath}/${file}`
       const stats = fs.statSync(originalPath)
-
+      const writePath = `${cwd}/${projectPath}/${file}`
       if (stats.isFile()) {
         const contents = fs.readFileSync(originalPath, 'utf8')
 
@@ -65,15 +66,15 @@ function createDirectoryContents(templatePath, projectPath) {
           file = '.gitignore'
         }
 
-        const writePath = `${cwd}/${projectPath}/${f}`
         fs.writeFileSync(writePath, contents, 'utf8')
       } else if (stats.isDirectory()) {
-        fs.mkdirSync(`${cwd}/${projectPath}/${f}`)
-        createDirectoryContents(`${templatePath}/${f}`, `${projectPath}/${f}`)
+        fs.mkdirSync(writePath)
+        createDirectoryContents(`${templatePath}/${file}`, `${projectPath}/${file}`)
       }
     })
   } catch (e) {
     console.error(`Error generating project from template: ${e}`)
+    throw e
   }
 }
 
