@@ -44,6 +44,11 @@ async function createDirectoryContents(templatePath, projectPath) {
 
       if (stats.isFile()) {
         const contents = await FileManager.readFile(originalPath, 'utf8')
+
+        if (file === '.npmignore') {
+          file = '.gitignore'
+        }
+
         const writePath = `${cwd}/${projectPath}/${f}`
         await FileManager.writeFile(writePath, contents, 'utf8')
       } else if (stats.isDirectory()) {

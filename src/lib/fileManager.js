@@ -8,7 +8,7 @@ const promisedReadDir = promisify(fs.readdir)
 const promisedStat = promisify(fs.stat)
 const promisedReadFile = promisify(fs.readFile)
 const promisedWriteFile = promisify(fs.writeFile)
-const promisedRmDir = promisify(fsExtra.remove)
+const promisedRmDir = promisify(fs.rmdir)
 const promisedUnlinkFile = promisify(fs.unlink)
 
 function FileManager() { }

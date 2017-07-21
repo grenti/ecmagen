@@ -6,6 +6,9 @@
   "repository": "https://github.com/grenti/ecmagen.git",
   "author": "Ghamoti Anye Angwafo",
   "license": "MIT",
+  "bin": {
+    "generate": "./index.js"
+  },
   "scripts": {
     "test": "tape './src/tests/runner.js' | tap-spec"
   },
