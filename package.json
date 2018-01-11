@@ -13,8 +13,8 @@
     "test": "tape './src/tests/runner.js' | tap-spec"
   },
   "dependencies": {
-    "fs-extra": "^4.0.0",
-    "inquirer": "^3.2.0"
+    "fs-extra": "^5.0.0",
+    "inquirer": "^5.0.0"
   },
   "devDependencies": {
     "eslint": "^4.2.0",
@@ -23,7 +23,7 @@
     "eslint-plugin-node": "^5.1.0",
     "eslint-plugin-promise": "^3.5.0",
     "eslint-plugin-standard": "^3.0.1",
-    "sinon": "^2.3.8",
+    "sinon": "^4.1.4",
     "tap-nyan": "^1.1.0",
     "tap-spec": "^4.1.1",
     "tape": "^4.7.0"
